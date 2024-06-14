@@ -1,9 +1,9 @@
 'use client'
 
 import { useState } from 'react'
-import { signup } from '../utils/auth'
+import { login } from '../utils/auth'
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
@@ -12,11 +12,11 @@ const RegisterForm = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     try {
-      await signup(email, password)
-      setSuccess('Registration successful!')
+      await login(email, password)
+      setSuccess('Login successful!')
       setError('')
     } catch (error) {
-      setError('Registration failed. Please try again.')
+      setError('Login failed. Please try again.')
       setSuccess('')
     }
   }
@@ -24,7 +24,7 @@ const RegisterForm = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold text-center">Register</h2>
+        <h2 className="text-2xl font-bold text-center">Login</h2>
         {error && <div className="text-red-500 text-center">{error}</div>}
         {success && <div className="text-green-500 text-center">{success}</div>}
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -58,7 +58,7 @@ const RegisterForm = () => {
             type="submit"
             className="w-full px-4 py-2 font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Register
+            Login
           </button>
         </form>
       </div>
@@ -66,4 +66,4 @@ const RegisterForm = () => {
   )
 }
 
-export default RegisterForm
+export default LoginForm
