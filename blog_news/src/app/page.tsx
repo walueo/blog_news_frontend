@@ -3,6 +3,7 @@ import HeroSlider from '@/components/HeroSlider'
 import ArticleCard from '@/components/ArticleCard'
 import Footer from '@/components/Footer'
 import { Article } from '@/types'
+import RegisterForm from '@/components/RegisterForm'
 
 // Sample JSON data
 const articles: Article[] = [
