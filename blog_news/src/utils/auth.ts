@@ -1,5 +1,7 @@
-import { auth } from '@/firebase';
+import { auth } from '@/utils/firebase';
 import firebase from 'firebase/compat/app';
+
+// ... (rest of the file remains the same)
 
 export const signup = async (email: string, password: string) => {
   try {
