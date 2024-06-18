@@ -1,8 +1,9 @@
+"use client"; // Add this line
+
 import { useState, useEffect } from 'react';
 import { auth } from '@/utils/firebase';
 import firebase from 'firebase/compat/app';
-
-// ... (rest of the file remains the same)
+import { logout } from '@/utils/auth';
 
 export const useAuth = () => {
   const [user, setUser] = useState<firebase.User | null>(null);
@@ -19,5 +20,14 @@ export const useAuth = () => {
     return unsubscribe;
   }, []);
 
-  return user;
+  const handleLogout = async () => {
+    try {
+      await logout();
+      setUser(null);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return { user, handleLogout };
 };
