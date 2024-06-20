@@ -1,0 +1,84 @@
+{
+  "/Users/agustingutierrez/Documents/devWorkspace/Next/blog_news_frontend/blog_news": {
+    "versionSfCore": null,
+    "versionFramework": "4.1.5",
+    "isWithinCompose": false,
+    "isCompose": false,
+    "composeOrgName": null,
+    "composeServiceName": null,
+    "servicePath": "/Users/agustingutierrez/Documents/devWorkspace/Next/blog_news_frontend/blog_news",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "blog_news",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs20.x",
+        "region": "us-east-1",
+        "stage": "dev"
+      },
+      "plugins": [
+        "serverless-next.js"
+      ],
+      "functions": {
+        "nextjsApp": {
+          "handler": ".next/serverless/pages/index.render",
+          "events": [
+            {
+              "http": {
+                "path": "/",
+                "method": "get"
+              }
+            },
+            {
+              "http": {
+                "path": "/_next/{proxy+}",
+                "method": "any"
+              }
+            },
+            {
+              "http": {
+                "path": "/{proxy+}",
+                "method": "any"
+              }
+            }
+          ]
+        }
+      },
+      "custom": {
+        "nextConfigDir": "./"
+      }
+    },
+    "serviceRawFile": "service: blog_news\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  region: us-east-1\n  stage: dev\n\nplugins:\n  - serverless-next.js\n\nfunctions:\n  nextjsApp:\n    handler: .next/serverless/pages/index.render\n    events:\n      - http:\n          path: /\n          method: get\n      - http:\n          path: /_next/{proxy+}\n          method: any\n      - http:\n          path: /{proxy+}\n          method: any\n\ncustom:\n  nextConfigDir: ./\n  # Add any custom configurations here, if needed\n",
+    "command": [
+      "deploy"
+    ],
+    "options": {},
+    "error": {
+      "message": "AWS credentials missing or invalid. Run \"serverless\" to set up AWS credentials, or learn more in our docs: http://slss.io/aws-creds-setup. Original error from AWS: Could not load credentials from any providers",
+      "code": "AWS_CREDENTIALS_MISSING"
+    },
+    "machineId": "551d0313cadb366bd81704942233c794",
+    "accessKeyV2": "<REDACTED>",
+    "accessKeyV1": "<REDACTED>",
+    "orgId": "894c1337-c2e5-4622-a4a9-3b6324609750",
+    "orgName": "agdev",
+    "userId": "q6SdLv9rZP6JRfnSnZ",
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": true,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "userName": "agdev",
+    "subscription": null,
+    "userEmail": "aggutiedev@gmail.com",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
