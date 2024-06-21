@@ -13,7 +13,8 @@ plugins:
 
 functions:
   nextjsApp:
-    handler: .next/serverless/pages/index.render
+    image:
+      name: node20lambda
     events:
       - http:
           path: /
@@ -25,6 +26,8 @@ functions:
           path: /{proxy+}
           method: any
 
+plugins:
+  - serverless-next.js
+
 custom:
   nextConfigDir: ./
-  # Add any custom configurations here, if needed
