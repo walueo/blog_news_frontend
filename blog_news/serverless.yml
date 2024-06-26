@@ -1,33 +1,25 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: agdev
-service: blog_news
+service: blog-news
 
 provider:
   name: aws
   runtime: nodejs20.x
   region: us-east-1
-  stage: dev
-
-plugins:
-  - serverless-next.js
+  stage: ${opt:stage, 'dev'}
+  profile: aggutie-sso
 
 functions:
   nextjsApp:
-    image:
-      name: node20lambda
+    image: 590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest
     events:
       - http:
           path: /
-          method: get
-      - http:
-          path: /_next/{proxy+}
-          method: any
+          method: ANY
       - http:
           path: /{proxy+}
-          method: any
-
-plugins:
-  - serverless-next.js
+          method: ANY
 
 custom:
-  nextConfigDir: ./
+  esbuild:
+    bundle: true
+    minify: false
