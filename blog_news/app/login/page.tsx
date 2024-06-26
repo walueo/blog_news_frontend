@@ -1,14 +1,14 @@
-import RegisterForm from '@/components/RegisterForm'
-import Navbar from '@/components/Navbar'
-import Footer from '@/components/Footer'
+import LoginForm from 'components/LoginForm'
+import Navbar from 'components/Navbar'
+import Footer from 'components/Footer'
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
       <main className="flex-grow">
         <div className="container mx-auto py-8">
-          <RegisterForm />
+          <LoginForm />
         </div>
       </main>
       <Footer />
@@ -16,4 +16,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default LoginPage

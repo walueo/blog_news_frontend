@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Article } from '@/types'
+import { Article } from 'types'
 
 interface HeroSliderProps {
   articles: Article[]
