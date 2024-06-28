@@ -1,11 +1,17 @@
-# Use the official AWS Lambda Node.js 20.x base image
+# Use the official Node.js 20.x image as the base image
 FROM public.ecr.aws/lambda/nodejs:20
 
-# Copy the project files into the Docker image
-COPY . ${LAMBDA_TASK_ROOT}
+# Set the working directory
+WORKDIR /var/task
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+
+# Copy the rest of the application code
+COPY . .
 
 # Build the Next.js project
 RUN npm run build

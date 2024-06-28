@@ -1,9 +1,6 @@
-import Navbar from 'components/Navbar'
-import HeroSlider from 'components/HeroSlider'
-import ArticleCard from 'components/ArticleCard'
-import Footer from 'components/Footer'
+import HeroSlider from 'app/components/HeroSlider'
+import ArticleCard from 'app/components/ArticleCard'
 import { Article } from 'types'
-import RegisterForm from 'components/RegisterForm'
 
 // Sample JSON data
 const articles: Article[] = [
@@ -35,7 +32,6 @@ const articles: Article[] = [
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
       <main className="flex-grow">
         <HeroSlider articles={articles} />
         <div className="container mx-auto py-8">
@@ -46,7 +42,6 @@ export default function Home() {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }
