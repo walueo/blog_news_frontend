@@ -10,7 +10,11 @@ provider:
 
 functions:
   nextjsApp:
+<<<<<<< HEAD
     handler: handler.js
+=======
+    image: 590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest
+>>>>>>> parent of 558a2a4c (more config)
     events:
       - http:
           path: /handler.s
