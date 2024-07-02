@@ -1,7 +1,7 @@
 {
   "/Users/agustingutierrez/Documents/devWorkspace/Next/blog_news_frontend/blog_news": {
     "versionSfCore": null,
-    "versionFramework": "4.1.5",
+    "versionFramework": "4.1.7",
     "isWithinCompose": false,
     "isCompose": false,
     "composeOrgName": null,
@@ -180,7 +180,7 @@
                     "Type": "AWS::Lambda::Function",
                     "Properties": {
                       "Code": {
-                        "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+                        "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
                       },
                       "PackageType": "Image",
                       "FunctionName": "blog-news-dev-nextjsApp",
@@ -197,14 +197,14 @@
                       "NextjsAppLogGroup"
                     ]
                   },
-                  "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I": {
+                  "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM": {
                     "Type": "AWS::Lambda::Version",
                     "DeletionPolicy": "Retain",
                     "Properties": {
                       "FunctionName": {
                         "Ref": "NextjsAppLambdaFunction"
                       },
-                      "CodeSha256": "e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+                      "CodeSha256": "0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
                     }
                   },
                   "ApiGatewayRestApi": {
@@ -329,7 +329,7 @@
                       "NextjsAppLambdaPermissionApiGateway"
                     ]
                   },
-                  "ApiGatewayDeployment1719012278615": {
+                  "ApiGatewayDeployment1719606465144": {
                     "Type": "AWS::ApiGateway::Deployment",
                     "Properties": {
                       "RestApiId": {
@@ -392,7 +392,7 @@
                   "NextjsAppLambdaFunctionQualifiedArn": {
                     "Description": "Current Lambda function version",
                     "Value": {
-                      "Ref": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+                      "Ref": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
                     },
                     "Export": {
                       "Name": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
@@ -534,7 +534,7 @@
                 "memory": 1024,
                 "timeout": 6,
                 "vpc": {},
-                "versionLogicalId": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+                "versionLogicalId": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
               }
             },
             "custom": {
@@ -727,7 +727,7 @@
               "Type": "AWS::Lambda::Function",
               "Properties": {
                 "Code": {
-                  "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+                  "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
                 },
                 "PackageType": "Image",
                 "FunctionName": "blog-news-dev-nextjsApp",
@@ -744,14 +744,14 @@
                 "NextjsAppLogGroup"
               ]
             },
-            "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I": {
+            "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM": {
               "Type": "AWS::Lambda::Version",
               "DeletionPolicy": "Retain",
               "Properties": {
                 "FunctionName": {
                   "Ref": "NextjsAppLambdaFunction"
                 },
-                "CodeSha256": "e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+                "CodeSha256": "0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
               }
             },
             "ApiGatewayRestApi": {
@@ -876,7 +876,7 @@
                 "NextjsAppLambdaPermissionApiGateway"
               ]
             },
-            "ApiGatewayDeployment1719012278615": {
+            "ApiGatewayDeployment1719606465144": {
               "Type": "AWS::ApiGateway::Deployment",
               "Properties": {
                 "RestApiId": {
@@ -939,7 +939,7 @@
             "NextjsAppLambdaFunctionQualifiedArn": {
               "Description": "Current Lambda function version",
               "Value": {
-                "Ref": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+                "Ref": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
               },
               "Export": {
                 "Name": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
@@ -1081,7 +1081,7 @@
           "memory": 1024,
           "timeout": 6,
           "vpc": {},
-          "versionLogicalId": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+          "versionLogicalId": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
         }
       },
       "custom": {
@@ -1098,7 +1098,7 @@
     "options": {},
     "error": null,
     "params": {},
-    "machineId": "a1eb7155ac242bece5f0d308cdfa41f0",
+    "machineId": "b3a76d16528a87595995be1613ae26dc",
     "accessKeyV2": "<REDACTED>",
     "accessKeyV1": "<REDACTED>",
     "orgId": "894c1337-c2e5-4622-a4a9-3b6324609750",
@@ -1118,16 +1118,16 @@
     "userEmail": "aggutiedev@gmail.com",
     "serviceProviderAwsCredentials": "<REDACTED>",
     "serviceProviderAwsAccountId": "590184075857",
-    "versionSf": "4.1.5",
+    "versionSf": "4.1.7",
     "serviceProviderAwsCfStackName": "blog-news-dev",
     "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:590184075857:stack/blog-news-dev/43ac3260-3020-11ef-b281-0affed32e8f9",
     "serviceProviderAwsCfStackCreated": "2024-06-21T22:47:40.539Z",
-    "serviceProviderAwsCfStackUpdated": "2024-06-21T22:48:31.684Z",
+    "serviceProviderAwsCfStackUpdated": "2024-06-28T20:28:03.298Z",
     "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
     "serviceProviderAwsCfStackOutputs": [
       {
         "OutputKey": "NextjsAppLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:590184075857:function:blog-news-dev-nextjsApp:1",
+        "OutputValue": "arn:aws:lambda:us-east-1:590184075857:function:blog-news-dev-nextjsApp:2",
         "Description": "Current Lambda function version",
         "ExportName": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
       },

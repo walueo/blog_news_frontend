@@ -172,7 +172,7 @@
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+                "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
               },
               "PackageType": "Image",
               "FunctionName": "blog-news-dev-nextjsApp",
@@ -189,14 +189,14 @@
               "NextjsAppLogGroup"
             ]
           },
-          "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I": {
+          "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "NextjsAppLambdaFunction"
               },
-              "CodeSha256": "e38b88f23416a0cf68c32a42ef4b180af85aa6d54ed57080c896066d0f0e434f"
+              "CodeSha256": "0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
             }
           },
           "ApiGatewayRestApi": {
@@ -321,7 +321,7 @@
               "NextjsAppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1719012278615": {
+          "ApiGatewayDeployment1719606465144": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -384,7 +384,7 @@
           "NextjsAppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+              "Ref": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
             },
             "Export": {
               "Name": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
@@ -533,7 +533,7 @@
         "memory": 1024,
         "timeout": 6,
         "vpc": {},
-        "versionLogicalId": "NextjsAppLambdaVersionGMa4Evv0qtbdc0hc2Wzyk5FDr9c6S7DvsV4VPY5I"
+        "versionLogicalId": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
       }
     },
     "configValidationMode": "warn",
@@ -557,7 +557,7 @@
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/blog-news/dev/1719012279407-2024-06-21T23:24:39.407Z",
+    "artifactDirectoryName": "serverless/blog-news/dev/1719606465913-2024-06-28T20:27:45.913Z",
     "artifact": ""
   }
 }
