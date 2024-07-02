@@ -14,6 +14,7 @@ module.exports.handler = async (event) => {
         .then(resolve)
         .catch(reject);
     });
+
     server.listen(3000, (err) => {
       if (err) return reject(err);
     });

@@ -10,14 +10,16 @@ provider:
 
 functions:
   nextjsApp:
-    handler: handler.handler
+    handler: handler.js
     events:
       - http:
-          path: /
+          path: /handler.s
           method: ANY
+          cors: true
       - http:
           path: /{proxy+}
           method: ANY
+          cors: true
 
 custom:
   esbuild:

@@ -1,12 +1,13 @@
 {
   "name": "blog_news",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "serverless deploy"
   },
   "dependencies": {
     "firebase": "^10.12.2",
