@@ -3,7 +3,7 @@ import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     './app/**/*.{js,ts,jsx,tsx}', // Add the path to your app directory
-    './components/**/*.{js,ts,jsx,tsx}', // Add the path to your components directory
+    './app/components/**/*.{js,ts,jsx,tsx}', // Add the path to your components directory
   ],
   theme: {
     extend: {
@@ -12,7 +12,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
-    },
+    }, 
   },
   plugins: [],
 };
