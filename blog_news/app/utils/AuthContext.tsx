@@ -1,9 +1,9 @@
 "use client"; // Add this line
 
 import { useState, useEffect } from 'react';
-import { auth } from '@/utils/firebase';
+import { auth } from './firebase';
 import firebase from 'firebase/compat/app';
-import { logout } from '@/utils/auth';
+import { logout } from './auth';
 
 export const useAuth = () => {
   const [user, setUser] = useState<firebase.User | null>(null);

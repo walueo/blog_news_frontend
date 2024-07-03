@@ -1,4 +1,4 @@
-import { auth } from '@/utils/firebase';
+import { auth } from './firebase';
 import firebase from 'firebase/compat/app';
 
 // ... (rest of the file remains the same)

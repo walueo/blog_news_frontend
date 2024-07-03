@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { login } from '@/utils/auth'
+import { login } from '../utils/auth'
 
 const LoginForm = () => {
   const [email, setEmail] = useState('')
