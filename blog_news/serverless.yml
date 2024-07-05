@@ -1,4 +1,3 @@
-org: agdev
 service: blog-news
 
 provider:
@@ -7,17 +6,19 @@ provider:
   region: us-east-1
   stage: ${opt:stage, 'dev'}
   profile: aggutie-sso
+  ecr:
+    images:
+      appimage:
+        uri: 590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest
 
 functions:
   nextjsApp:
-<<<<<<< HEAD
-    handler: handler.js
-=======
-    image: 590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest
->>>>>>> parent of 558a2a4c (more config)
+    image:
+      name: appimage
+    timeout: 30
     events:
       - http:
-          path: /handler.s
+          path: /
           method: ANY
           cors: true
       - http:
@@ -29,3 +30,7 @@ custom:
   esbuild:
     bundle: true
     minify: false
+    target: "node20"
+    external: [".next"]
+    packager: "npm"
+    exclude: ["aws-sdk"]

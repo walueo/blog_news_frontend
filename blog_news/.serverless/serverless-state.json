@@ -10,6 +10,13 @@
       "region": "us-east-1",
       "stage": "dev",
       "profile": "aggutie-sso",
+      "ecr": {
+        "images": {
+          "appimage": {
+            "uri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest"
+          }
+        }
+      },
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -172,12 +179,12 @@
             "Type": "AWS::Lambda::Function",
             "Properties": {
               "Code": {
-                "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
+                "ImageUri": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda@sha256:ba992ad12dce75264fcda9d28a3734fb920094afcf9fe4aea8f68343f41a4ff1"
               },
               "PackageType": "Image",
               "FunctionName": "blog-news-dev-nextjsApp",
               "MemorySize": 1024,
-              "Timeout": 6,
+              "Timeout": 30,
               "Role": {
                 "Fn::GetAtt": [
                   "IamRoleLambdaExecution",
@@ -189,14 +196,14 @@
               "NextjsAppLogGroup"
             ]
           },
-          "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM": {
+          "NextjsAppLambdaVersionK0aJFsfXKwres00neuFDEeJg2lj1CfWTNDT1KWtbNs": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "NextjsAppLambdaFunction"
               },
-              "CodeSha256": "0bd76f39f39fc7f1355a493e7f337a86c07fc8767aedb744d84ae122d29a53aa"
+              "CodeSha256": "ba992ad12dce75264fcda9d28a3734fb920094afcf9fe4aea8f68343f41a4ff1"
             }
           },
           "ApiGatewayRestApi": {
@@ -221,6 +228,99 @@
                 ]
               },
               "PathPart": "{proxy+}",
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Fn::GetAtt": [
+                  "ApiGatewayRestApi",
+                  "RootResourceId"
+                ]
+              },
+              "RestApiId": {
+                "Ref": "ApiGatewayRestApi"
+              }
+            }
+          },
+          "ApiGatewayMethodProxyVarOptions": {
+            "Type": "AWS::ApiGateway::Method",
+            "Properties": {
+              "AuthorizationType": "NONE",
+              "HttpMethod": "OPTIONS",
+              "MethodResponses": [
+                {
+                  "StatusCode": "200",
+                  "ResponseParameters": {
+                    "method.response.header.Access-Control-Allow-Origin": true,
+                    "method.response.header.Access-Control-Allow-Headers": true,
+                    "method.response.header.Access-Control-Allow-Methods": true
+                  },
+                  "ResponseModels": {}
+                }
+              ],
+              "RequestParameters": {},
+              "Integration": {
+                "Type": "MOCK",
+                "RequestTemplates": {
+                  "application/json": "{statusCode:200}"
+                },
+                "ContentHandling": "CONVERT_TO_TEXT",
+                "IntegrationResponses": [
+                  {
+                    "StatusCode": "200",
+                    "ResponseParameters": {
+                      "method.response.header.Access-Control-Allow-Origin": "'*'",
+                      "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token,X-Amz-User-Agent,X-Amzn-Trace-Id'",
+                      "method.response.header.Access-Control-Allow-Methods": "'OPTIONS,DELETE,GET,HEAD,PATCH,POST,PUT'"
+                    },
+                    "ResponseTemplates": {
+                      "application/json": ""
+                    }
+                  }
+                ]
+              },
+              "ResourceId": {
+                "Ref": "ApiGatewayResourceProxyVar"
+              },
               "RestApiId": {
                 "Ref": "ApiGatewayRestApi"
               }
@@ -321,7 +421,7 @@
               "NextjsAppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1719606465144": {
+          "ApiGatewayDeployment1720025662249": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -330,6 +430,8 @@
               "StageName": "dev"
             },
             "DependsOn": [
+              "ApiGatewayMethodOptions",
+              "ApiGatewayMethodProxyVarOptions",
               "ApiGatewayMethodAny",
               "ApiGatewayMethodProxyVarAny"
             ]
@@ -384,7 +486,7 @@
           "NextjsAppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
+              "Ref": "NextjsAppLambdaVersionK0aJFsfXKwres00neuFDEeJg2lj1CfWTNDT1KWtbNs"
             },
             "Export": {
               "Name": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
@@ -505,18 +607,46 @@
     "custom": {
       "esbuild": {
         "bundle": true,
-        "minify": false
+        "minify": false,
+        "target": "node20",
+        "external": [
+          ".next"
+        ],
+        "packager": "npm",
+        "exclude": [
+          "aws-sdk"
+        ]
       }
     },
     "pluginsData": {},
     "functions": {
       "nextjsApp": {
-        "image": "590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest",
+        "image": {
+          "name": "appimage"
+        },
+        "timeout": 30,
         "events": [
           {
             "http": {
               "path": "",
               "method": "any",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "ANY"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
               "integration": "AWS_PROXY"
             }
           },
@@ -524,6 +654,23 @@
             "http": {
               "path": "{proxy+}",
               "method": "any",
+              "cors": {
+                "origin": "*",
+                "methods": [
+                  "OPTIONS",
+                  "ANY"
+                ],
+                "headers": [
+                  "Content-Type",
+                  "X-Amz-Date",
+                  "Authorization",
+                  "X-Api-Key",
+                  "X-Amz-Security-Token",
+                  "X-Amz-User-Agent",
+                  "X-Amzn-Trace-Id"
+                ],
+                "allowCredentials": false
+              },
               "integration": "AWS_PROXY"
             }
           }
@@ -531,15 +678,13 @@
         "name": "blog-news-dev-nextjsApp",
         "package": {},
         "memory": 1024,
-        "timeout": 6,
         "vpc": {},
-        "versionLogicalId": "NextjsAppLambdaVersioniLTFfPLbX1RovhG0kPU3KafPB6RDqVaNYaGkpbKPwM"
+        "versionLogicalId": "NextjsAppLambdaVersionK0aJFsfXKwres00neuFDEeJg2lj1CfWTNDT1KWtbNs"
       }
     },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "org": "agdev",
       "service": "blog-news",
       "provider": {
         "$ref": "$[\"service\"][\"provider\"]"
@@ -552,12 +697,11 @@
       }
     },
     "appId": null,
-    "org": "agdev",
     "orgId": null,
     "layers": {}
   },
   "package": {
-    "artifactDirectoryName": "serverless/blog-news/dev/1719606465913-2024-06-28T20:27:45.913Z",
+    "artifactDirectoryName": "serverless/blog-news/dev/1720025663215-2024-07-03T16:54:23.215Z",
     "artifact": ""
   }
 }

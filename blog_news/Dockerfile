@@ -17,4 +17,4 @@ COPY . .
 RUN npm run build
 
 # Command to run the Lambda function
-CMD ["index.handler"]
+CMD ["handler.handler"]
