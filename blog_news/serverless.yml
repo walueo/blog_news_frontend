@@ -1,36 +1,23 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: agdev
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: blognews
 service: blog-news
 
 provider:
   name: aws
   runtime: nodejs20.x
-  region: us-east-1
-  stage: ${opt:stage, 'dev'}
-  profile: aggutie-sso
-  ecr:
-    images:
-      appimage:
-        uri: 590184075857.dkr.ecr.us-east-1.amazonaws.com/node20lambda:latest
+  region: us-east-1 # You can choose your preferred AWS region
 
-functions:
-  nextjsApp:
-    image:
-      name: appimage
-    timeout: 30
-    events:
-      - http:
-          path: /
-          method: ANY
-          cors: true
-      - http:
-          path: /{proxy+}
-          method: ANY
-          cors: true
+plugins:
+  - serverless-next.js
 
 custom:
-  esbuild:
-    bundle: true
-    minify: false
-    target: "node20"
-    external: [".next"]
-    packager: "npm"
-    exclude: ["aws-sdk"]
+  nextConfigDir: ./
+
+functions:
+  app:
+    handler: serverless-next.handler
+    events:
+      - http: "ANY /"
+      - http: "ANY /{proxy+}"
