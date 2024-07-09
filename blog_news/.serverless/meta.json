@@ -1,89 +1,18 @@
 {
-  "/Users/agustingutierrez/Documents/devWorkspace/Next/blog_news_frontend/blog_news": {
+  "unknown": {
     "versionSfCore": null,
     "versionFramework": "4.1.11",
     "isWithinCompose": false,
-    "isCompose": false,
     "composeOrgName": null,
     "composeServiceName": null,
-    "servicePath": "/Users/agustingutierrez/Documents/devWorkspace/Next/blog_news_frontend/blog_news",
-    "serviceConfigFileName": "serverless.yml",
-    "service": {
-      "service": "blog-news",
-      "provider": {
-        "name": "aws",
-        "runtime": "nodejs20.x",
-        "region": "us-east-1"
-      },
-      "plugins": [
-        "serverless-next.js"
-      ],
-      "custom": {
-        "nextConfigDir": "./"
-      },
-      "functions": {
-        "app": {
-          "handler": "serverless-next.handler",
-          "events": [
-            {
-              "http": "ANY /"
-            },
-            {
-              "http": "ANY /{proxy+}"
-            }
-          ]
-        }
-      }
-    },
-    "serviceRawFile": "service: blog-news\n\nprovider:\n  name: aws\n  runtime: nodejs20.x\n  region: us-east-1 # You can choose your preferred AWS region\n\nplugins:\n  - serverless-next.js\n\ncustom:\n  nextConfigDir: ./\n\nfunctions:\n  app:\n    handler: serverless-next.handler\n    events:\n      - http: \"ANY /\"\n      - http: \"ANY /{proxy+}\"\n",
-    "command": [
-      "deploy"
-    ],
+    "command": [],
     "options": {},
-    "error": {
-      "message": "AWS credentials missing or invalid. Run \"serverless\" to set up AWS credentials, or learn more in our docs: http://slss.io/aws-creds-setup. Original error from AWS: Could not load credentials from any providers",
-      "code": "AWS_CREDENTIALS_MISSING"
-    },
-    "machineId": "e8905cc1a9b27604437d4500ea4bb81c",
-    "accessKeyV2": "<REDACTED>",
-    "accessKeyV1": "<REDACTED>",
-    "orgId": "894c1337-c2e5-4622-a4a9-3b6324609750",
-    "orgName": "agdev",
-    "userId": "q6SdLv9rZP6JRfnSnZ",
-    "dashboard": {
-      "isEnabledForService": false,
-      "requiredAuthentication": false,
-      "orgFeaturesInUse": null,
-      "orgObservabilityIntegrations": null,
-      "serviceAppId": null,
-      "serviceProvider": null,
-      "instanceParameters": null
-    },
-    "userName": "agdev",
-    "subscription": null,
-    "userEmail": "aggutiedev@gmail.com",
-    "serviceProviderAwsCfStackId": "arn:aws:cloudformation:us-east-1:590184075857:stack/blog-news-dev/43ac3260-3020-11ef-b281-0affed32e8f9",
-    "serviceProviderAwsCfStackCreated": "2024-06-21T22:47:40.539Z",
-    "serviceProviderAwsCfStackUpdated": "2024-07-08T15:31:32.145Z",
-    "serviceProviderAwsCfStackStatus": "UPDATE_COMPLETE",
-    "serviceProviderAwsCfStackOutputs": [
-      {
-        "OutputKey": "NextjsAppLambdaFunctionQualifiedArn",
-        "OutputValue": "arn:aws:lambda:us-east-1:590184075857:function:blog-news-dev-nextjsApp:17",
-        "Description": "Current Lambda function version",
-        "ExportName": "sls-blog-news-dev-NextjsAppLambdaFunctionQualifiedArn"
-      },
-      {
-        "OutputKey": "ServiceEndpoint",
-        "OutputValue": "https://2opb80xpp6.execute-api.us-east-1.amazonaws.com/dev",
-        "Description": "URL of the service endpoint",
-        "ExportName": "sls-blog-news-dev-ServiceEndpoint"
-      },
-      {
-        "OutputKey": "ServerlessDeploymentBucketName",
-        "OutputValue": "blog-news-dev-serverlessdeploymentbucket-xrutxir4nyje",
-        "ExportName": "sls-blog-news-dev-ServerlessDeploymentBucketName"
-      }
-    ]
+    "error": null,
+    "machineId": "a771f090281b8a5c583cbb11838dc136",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
   }
 }

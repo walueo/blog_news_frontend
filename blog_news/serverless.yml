@@ -1,13 +1,22 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: agdev
-# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
 app: blognews
 service: blog-news
 
 provider:
   name: aws
   runtime: nodejs20.x
-  region: us-east-1 # You can choose your preferred AWS region
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - lambda:InvokeFunction
+        - lambda:CreateFunction
+        - lambda:UpdateFunctionConfiguration
+        - lambda:UpdateFunctionCode
+        - s3:*
+        - cloudformation:*
+      Resource: "*"
+  role: arn:aws:iam::590184075857:role/SFSetup-480d2b
 
 plugins:
   - serverless-next.js
